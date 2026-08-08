@@ -1,6 +1,6 @@
 cask "cielo" do
-  version "0.1.0-78"
-  sha256 "e69cfb39ae8678d87c3432c0a5822399d60c5d315b2bc433a274e90ab42ff8ea"
+  version "0.1.0-111"
+  sha256 "8505c02c062b69ec4d64dba42bcd00f7a748c660165155f8bfb7c52253585d91"
 
   url "https://github.com/12monkeys-happy/homebrew-cielo/releases/download/v#{version}/Cielo-#{version}.dmg"
   name "Cielo"
@@ -15,15 +15,15 @@ cask "cielo" do
   # aquí. Es el MISMO consentimiento que autorizar la app en Ajustes,
   # solo que explícito y legible en este archivo: quien instala desde
   # este tap puede leer exactamente qué se hace con su Mac.
-  # Cuando Cielo esté notarizada esto sobra y se elimina.
+  # Cuando Cielo esté notarizada, este bloque desaparece solo.
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Cielo.app"],
                    must_succeed: false
   end
 
-  # Cielo restaura el fondo de pantalla al salir, así que desinstalar
-  # SIN cerrarla antes dejaría el escritorio teñido para siempre.
+  # Cielo restaura el fondo de pantalla al salir, así que desinstalar SIN
+  # cerrarla antes dejaría el escritorio teñido para siempre.
   uninstall quit: "com.magicsur.cielo"
 
   zap trash: [
