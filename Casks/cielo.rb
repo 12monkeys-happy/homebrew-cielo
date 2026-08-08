@@ -1,6 +1,6 @@
 cask "cielo" do
-  version "0.1.0-111"
-  sha256 "8505c02c062b69ec4d64dba42bcd00f7a748c660165155f8bfb7c52253585d91"
+  version "0.1.0-112"
+  sha256 "ee48a1da0da81752b1898513fd082dc4f62691e135d4a614f63441b4b0146b46"
 
   url "https://github.com/12monkeys-happy/homebrew-cielo/releases/download/v#{version}/Cielo-#{version}.dmg"
   name "Cielo"
