@@ -5,16 +5,20 @@ la app de barra de menú que tiñe la franja superior de tu fondo de
 pantalla con el color real del cielo sobre tu ciudad.
 
 ```bash
-brew install --cask --no-quarantine 12monkeys-happy/cielo/cielo
+brew install --cask 12monkeys-happy/cielo/cielo
 ```
 
-### ¿Por qué `--no-quarantine`?
+### Sobre la advertencia de macOS
 
 Cielo todavía no está notarizada por Apple (un trámite de pago para
-desarrolladores, en curso). Sin esa marca, macOS bloquea la app la
+desarrolladores, en curso). Sin ese sello macOS bloquea la app la
 primera vez y hay que autorizarla a mano en Ajustes → Privacidad y
-seguridad. `--no-quarantine` evita ese paso: le dice a macOS que
-confías en lo que estás instalando a propósito.
+seguridad.
+
+Para evitarte ese paso, **este instalador quita la marca de cuarentena**
+después de copiar la app. Es el mismo consentimiento que darías en
+Ajustes, solo que explícito: puedes leer exactamente qué hace en
+[`Casks/cielo.rb`](Casks/cielo.rb).
 
 La app **sí está firmada** y su firma es válida — lo único que le falta
 es el sello de notarización.

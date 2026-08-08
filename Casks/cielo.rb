@@ -7,9 +7,20 @@ cask "cielo" do
   desc "Tiñe la franja superior del fondo de pantalla con el color real del cielo"
   homepage "https://github.com/12monkeys-happy/homebrew-cielo"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Cielo.app"
+
+  # Homebrew 6 ya no acepta --no-quarantine, así que la marca se quita
+  # aquí. Es el MISMO consentimiento que autorizar la app en Ajustes,
+  # solo que explícito y legible en este archivo: quien instala desde
+  # este tap puede leer exactamente qué se hace con su Mac.
+  # Cuando Cielo esté notarizada esto sobra y se elimina.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Cielo.app"],
+                   must_succeed: false
+  end
 
   # Cielo restaura el fondo de pantalla al salir, así que desinstalar
   # SIN cerrarla antes dejaría el escritorio teñido para siempre.
@@ -22,9 +33,8 @@ cask "cielo" do
   ]
 
   caveats <<~EOS
-    Cielo todavía no está notarizada por Apple. Si la instalaste sin
-    --no-quarantine, macOS la bloqueará: autorízala en
-    Ajustes del Sistema → Privacidad y seguridad → "Abrir de todos modos".
+    Cielo todavía no está notarizada por Apple, así que este instalador
+    le quita la marca de cuarentena para que abra sin advertencias.
 
     El ícono vive en la barra de menú, arriba a la derecha.
     Para cerrarla: clic derecho en el ícono → Salir de Cielo.
